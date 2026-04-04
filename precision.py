@@ -1,6 +1,5 @@
 import pandas as pd
 from predictor import estimate_price
-from calculations import ft_mean
 
 
 def calculate_r2(mileage, price, theta0, theta1):
@@ -17,7 +16,7 @@ def calculate_r2(mileage, price, theta0, theta1):
 
     predictions = estimate_price(mileage, theta0, theta1)
     rss = sum((price - predictions) ** 2)
-    tss = sum((price - ft_mean(price)) ** 2)
+    tss = sum((price - price.mean()) ** 2)
     return 1 - (rss / tss)
 
 

@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-from calculations import ft_mean, ft_std
 from predictor import estimate_price
 
 
@@ -108,14 +107,14 @@ def main():
         mileage = df['km']
         price = df['price']
 
-        mean = ft_mean(mileage)
-        std_var = ft_std(mileage)
-        normalize_mileage = (mileage - mean) / std_var
+        mean_var = mileage.mean()
+        std_var = mileage.std()
+        normalize_mileage = (mileage - mean_var) / std_var
 
         theta0, theta1, cost_history = gradient_descent(normalize_mileage,
                                                         price)
 
-        theta0 = theta0 - theta1 * (mean / std_var)
+        theta0 = theta0 - theta1 * (mean_var / std_var)
         theta1 = theta1 / std_var
 
         with open('thetas.txt', 'w') as file:
