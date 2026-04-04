@@ -15,7 +15,7 @@ def calculate_cost(error):
     """
 
     m = len(error)
-    cost = (1 / (2 * m)) * sum(error ** 2)
+    cost = (1 / m) * sum(error ** 2)
     return cost
 
 
