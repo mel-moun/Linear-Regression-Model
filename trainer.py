@@ -52,8 +52,6 @@ def gradient_descent(mileage, price):
         theta0 = tmp_0
         theta1 = tmp_1
 
-    print(f"theta0: {theta0}\ntheta1: {theta1}")
-
     return theta0, theta1, cost_history
 
 
@@ -116,6 +114,8 @@ def main():
 
         theta0 = theta0 - theta1 * (mean_var / std_var)
         theta1 = theta1 / std_var
+
+        print(f"theta0: {theta0}\ntheta1: {theta1}")
 
         with open('thetas.txt', 'w') as file:
             file.write(f"{theta0},{theta1}")
