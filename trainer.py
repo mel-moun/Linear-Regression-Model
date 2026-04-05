@@ -46,11 +46,11 @@ def gradient_descent(mileage, price):
         cost = calculate_cost(error)
         cost_history.append(cost)
 
-        tmp_theta0 = (1 / m) * sum(error)
-        tmp_theta1 = (1 / m) * sum(error * mileage)
+        tmp_0 = theta0 - (learning_rate * (1 / m) * sum(error))
+        tmp_1 = theta1 - (learning_rate * (1 / m) * sum(error * mileage))
 
-        theta0 -= learning_rate * tmp_theta0
-        theta1 -= learning_rate * tmp_theta1
+        theta0 = tmp_0
+        theta1 = tmp_1
 
     print(f"theta0: {theta0}\ntheta1: {theta1}")
 
