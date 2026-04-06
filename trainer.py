@@ -105,7 +105,7 @@ def main():
         mileage = df['km']
         price = df['price']
 
-        if df['km'].isnull().any() or df['price'].isnull().any():
+        if mileage.isnull().any() or price.isnull().any():
             raise ValueError("Dataset contains NaN values.")
 
         mean_var = mileage.mean()
