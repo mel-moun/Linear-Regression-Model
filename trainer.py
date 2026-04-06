@@ -105,8 +105,13 @@ def main():
         mileage = df['km']
         price = df['price']
 
+        if df['km'].isnull().any() or df['price'].isnull().any():
+            raise ValueError("Dataset contains NaN values.")
+
         mean_var = mileage.mean()
         std_var = mileage.std()
+        if std_var == 0:
+            raise ValueError("All mileage values are identical.")
         normalize_mileage = (mileage - mean_var) / std_var
 
         theta0, theta1, cost_history = gradient_descent(normalize_mileage,
