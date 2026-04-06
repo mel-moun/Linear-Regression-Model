@@ -120,8 +120,6 @@ def main():
         theta0 = theta0 - theta1 * (mean_var / std_var)
         theta1 = theta1 / std_var
 
-        print(f"theta0: {theta0}\ntheta1: {theta1}")
-
         with open('thetas.txt', 'w') as file:
             file.write(f"{theta0},{theta1}")
 
